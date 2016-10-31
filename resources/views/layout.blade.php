@@ -13,7 +13,6 @@
         
     </head>
     <body>
-        <div class="body">
                <nav class="navbar navbar-inverse navbar-fixed-top">
                   <div class="container">
                     <div class="navbar-header">
@@ -23,14 +22,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" href="#">Project name</a>
+                      <a class="navbar-brand" href="#">MD Appointment</a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                       <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/timeline">Timeline</a></li>
+                        <li><a href="/connections">Connections</a></li>
                       </ul>
+
+                      <ul class="nav navbar-nav pull-right">
+                        <li class="active"><a href="#">Sign up</a></li>
+                        <li><a href="#about">Sign in</a></li>
+                        <li><a href="#about">Logout</a></li>
+                        <li><a href="/settings">Settings</a></li>
+                      </ul>
+
                     </div><!--/.nav-collapse -->
                   </div>
                 </nav>
@@ -38,7 +45,18 @@
             <div class="container">
                 @yield('content')
             </div>
-        </div>
+
+
+<!-- 
+         <footer class="footer">
+              <div class="container">
+                <p class="text-muted">Place sticky footer content here.</p>
+              </div>
+            </footer> -->
+
+            <script src="/js/app.js"></script>
+
+            @yield('javascripts')
 
     </body>
 </html>
