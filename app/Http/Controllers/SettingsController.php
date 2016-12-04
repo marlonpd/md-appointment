@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
 
 
 class SettingsController extends Controller
@@ -18,58 +20,19 @@ class SettingsController extends Controller
 
     public function index()
     {
+        session()->flash('flash_message', 'test');
     	return view('pages.settings');
     }
 
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function profile(ProfileRequest $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        $user = User::findOrFail(Auth::user()->id);
+        $request->replace(array('password' => bcrypt($request->input('password'))));
+        $user->update($request->all());       
+
+        return redirect('settings');
     }
-
-
-    public function profile(Request $request)
-    {
-    	$input = Input::except('_token');
-
-		if($request->file('photo')){
-    		$this->validate($request,[
-    			'photo' => 'mimes:jpq,jpeg,png,bmp'
-    		]);
-
-    		$photo = $this->makePhoto($request->file('photo'));
-    		
-    		$input[$key] = $photo;
-    	}
-
-
-    	if($key == 'old_password' && bcrypt($input['old_password']) ){
-    		if()
-    	}
-
-	    dd();
-
-    	/*if($request->file('photo')){
-    		$this->validate($request,[
-    			'photo' => 'mimes:jpq,jpeg,png,bmp'
-    		]);
-
-    		$photo = $this->makePhoto($request->file('photo'));
-    	}*/
-       
-
-    }
-
 
 
     protected function updateProfile(array $data, $photo)
@@ -77,6 +40,7 @@ class SettingsController extends Controller
     	$user = User::find(Auth::user()->id);
 
         return $user->update([
+            'id'    => Auth::user()->id ,
             'name' => $data['name'],
             'email' => $data['email'],
             'photo' => $data['email'],
@@ -87,6 +51,7 @@ class SettingsController extends Controller
 
     public function makePhoto(UploadedFile $file)
     {
+
 
     }
 }

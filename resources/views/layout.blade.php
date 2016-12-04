@@ -10,9 +10,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="/css/app.css">
-        
+        <link rel="stylesheet" type="text/css" href="/css/all.css">
     </head>
     <body>
+
                <nav class="navbar navbar-inverse navbar-fixed-top">
                   <div class="container">
                     <div class="navbar-header">
@@ -32,9 +33,9 @@
                       </ul>
 
                       <ul class="nav navbar-nav pull-right">
-                        <li class="active"><a href="#">Sign up</a></li>
-                        <li><a href="#about">Sign in</a></li>
-                        <li><a href="#about">Logout</a></li>
+                        <li class="active"><a href="/register">Sign up</a></li>
+                        <li><a href="/login">Sign in</a></li>
+                        <li><a href="/logout">Logout</a></li>
                         <li><a href="/settings">Settings</a></li>
                       </ul>
 
@@ -54,8 +55,9 @@
               </div>
             </footer> -->
 
-            <script src="/js/app.js"></script>
+            <script src="/js/all.js"></script>
 
+            @include('partials.flash')
             @yield('javascripts')
 
     </body>

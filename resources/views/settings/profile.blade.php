@@ -37,7 +37,7 @@
 
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="password_confirmation" placeholder="Password" name="password_confirmation" required>
+      <input type="password" class="form-control" id="password_confirmation" placeholder="Password" name="password_confirmation">
     </div>
 
 
